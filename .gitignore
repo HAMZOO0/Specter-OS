@@ -1,0 +1,8 @@
+chroot/
+iso/
+live/
+*.iso
+*.squashfs
+*.img
+vmlinuz*
+initrd.img*

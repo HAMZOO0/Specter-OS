@@ -1,0 +1,11 @@
+\[Unit]
+Description=Tor Transparent Routing
+After=network.target tor.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/tor-routing.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
