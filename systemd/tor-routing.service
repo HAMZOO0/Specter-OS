@@ -1,6 +1,12 @@
-\[Unit]
-Description=Tor Transparent Routing
-After=network.target tor.service
+[Unit]
+Description=Specter OS transparent Tor routing and kill-switch
+Documentation=https://github.com/HAMZOO0/Specter-OS
+# Run in early boot, before any network interface is configured,
+# so there is no window in which traffic can bypass Tor.
+DefaultDependencies=no
+After=local-fs.target systemd-sysctl.service
+Before=network-pre.target tor.service NetworkManager.service
+Wants=network-pre.target
 
 [Service]
 Type=oneshot
@@ -8,4 +14,4 @@ ExecStart=/usr/local/bin/tor-routing.sh
 RemainAfterExit=yes
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=sysinit.target

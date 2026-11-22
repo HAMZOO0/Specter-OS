@@ -1,3 +1,4 @@
+# ---- Build outputs (large, host-specific) ----
 chroot/
 iso/
 live/
@@ -6,3 +7,54 @@ live/
 *.img
 vmlinuz*
 initrd.img*
+
+# ---- LaTeX intermediates ----
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+docs/whitepaper/build.out
+
+# ---- Raw screenshots / captures (may contain IPs, MACs, hostnames, boot logs) ----
+# Only add sanitised images to the repository, under docs/images/.
+screenshots/
+captures/
+*.pcap
+*.pcapng
+
+# ---- Logs and diagnostics from test runs ----
+logs/
+*.dmesg
+journal*.txt
+
+# ---- Secrets and private material ----
+*.key
+*.pem
+*.gpg
+*.asc
+.env
+id_rsa*
+id_ed25519*
+
+# ---- Personal notes / drafts ----
+notes/
+drafts/
+*.draft.*
+
+# ---- Editor and OS files ----
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
