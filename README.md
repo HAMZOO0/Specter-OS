@@ -1,17 +1,35 @@
 # Specter OS
 
-**A fail-closed, transparently Tor-routed live Linux distribution.**
+A fail-closed, transparently Tor-routed live Linux distribution. Every connection is forced through Tor by the kernel packet filter, and if Tor fails the system goes offline instead of leaking.
 
-Specter OS is a Debian-based live operating system that boots from read-only media, runs entirely from RAM, and forces every network connection through the Tor network. Enforcement lives in the kernel packet filter, not in application settings, and it is in place before any network interface is configured. If Tor stops working, the system goes offline. It never falls back to the clearnet.
+[![Preprint: Zenodo](https://img.shields.io/badge/preprint-Zenodo%202026-lightgrey?style=flat-square)](https://zenodo.org/records/24439519)
+[![DOI: 10.5281/zenodo.24439519](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.24439519-blue?style=flat-square)](https://doi.org/10.5281/zenodo.24439519)
+[![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue?style=flat-square)](LICENSE)
+[![Base: Debian 13](https://img.shields.io/badge/base-Debian%2013-lightgrey?style=flat-square)](#technology-stack)
+[![Status: experimental](https://img.shields.io/badge/status-experimental-lightgrey?style=flat-square)](#limitations)
+
+[Preprint (Zenodo)](https://doi.org/10.5281/zenodo.24439519) | [Paper (PDF)](docs/whitepaper/specter-os-whitepaper.pdf) | [Paper (LaTeX)](docs/whitepaper/specter-os-whitepaper.tex) | [Development handbook](docs/Specter_OS_Development_Handbook.pdf) | [Cite](#citation)
+
+---
+
+## Preprint
+
+> H. Sajid, "Specter OS: A Fail-Closed, Transparently Tor-Routed Live Linux Distribution," Zenodo, preprint, Nov. 2026, doi: [10.5281/zenodo.24439519](https://doi.org/10.5281/zenodo.24439519).
+
+The paper covers the design, threat model, implementation and leak evaluation of Specter OS. BibTeX is in [Citation](#citation).
+
+## Summary
 
 | | |
 |---|---|
-| **Paper** | *Specter OS: A Fail-Closed, Transparently Tor-Routed Live Linux Distribution* (preprint, 2026) |
-| **DOI** | [10.5281/zenodo.24439519](https://doi.org/10.5281/zenodo.24439519) |
-| **Zenodo record** | [zenodo.org/records/24439519](https://zenodo.org/records/24439519) |
-| **Version** | 1.0 (November 2026) |
+| **Type** | Amnesic live OS, boots from read-only media and runs from RAM |
 | **Base** | Debian 13 (stable), Linux 6.12, amd64 |
+| **Enforcement** | `iptables` / `ip6tables` kill-switch, loaded before `network-pre.target` |
+| **Leak vectors closed** | DNS, non-DNS UDP, ICMP, IPv6, early-boot window, Tor failure |
+| **Version** | 1.0 (November 2026) |
 | **License** | GPL-3.0 (code), CC BY 4.0 (paper) |
+
+Specter OS is a Debian-based live operating system that boots from read-only media, runs entirely from RAM, and forces every network connection through the Tor network. Enforcement lives in the kernel packet filter, not in application settings, and it is in place before any network interface is configured. If Tor stops working, the system goes offline. It never falls back to the clearnet.
 
 > **Status:** experimental research project. It has not been independently audited. Do not rely on it where an anonymity failure carries real-world risk. See [Limitations](#limitations).
 
